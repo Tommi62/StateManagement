@@ -32,7 +32,7 @@ app.get('/', (req, res) => {
 
 app.get('/form', (req, res) => {
   if(req.session.logged){
-    res.redirect('/secret');
+    res.redirect('app/secret');
   }else {
     res.render('form');
   }
@@ -42,16 +42,16 @@ app.get('/secret', (req, res) => {
   if(req.session.logged){
     res.render('secret');
   }else {
-    res.redirect('/form');
+    res.redirect('app/form');
   }
 });
 
 app.post('/login', (req, res) => {
   if (req.body.username === username && req.body.password === password) {
     req.session.logged = true;
-    res.redirect('/secret');
+    res.redirect('app/secret');
   } else {
-    res.redirect('/form');
+    res.redirect('app/form');
   }
 });
 
